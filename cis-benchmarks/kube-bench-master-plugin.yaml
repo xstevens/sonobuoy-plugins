@@ -33,14 +33,14 @@ podSpec:
 sonobuoy-config:
   driver: DaemonSet
   plugin-name: kube-bench-master
-  result-format: junit
+  result-format: json
 spec:
   command:
   - /bin/sh
   args:
   - -c
-  - kube-bench master --version 1.13 --outputfile /tmp/results/output.xml --junit ; echo -n /tmp/results/output.xml > /tmp/results/done
-  image: aquasec/kube-bench:0.2.1
+  - kube-bench master --version 1.16 --outputfile /tmp/results/output.json --json ; echo -n /tmp/results/output.json > /tmp/results/done
+  image: aquasec/kube-bench:0.2.3
   name: plugin
   resources: {}
   volumeMounts:
